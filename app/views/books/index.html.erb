@@ -1,5 +1,5 @@
 <head>
-    <title>WebCampBackendNew</title>
+    <title>Booker</title>
 </head>
 
 
@@ -31,7 +31,7 @@
       </td>
 
       <td>
-        <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+        <%= link_to "Destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
       </td>
     </tr>
   </tbody>
@@ -43,15 +43,17 @@
 
 
 <h1>New Book</h1>
-
-<% if @book.errors.any? %>
+<div id="error_explanation">
+  <% if @book.errors.any? %>
   <%= @book.errors.count %> errors prohibited this book from being saved:
   <ul>
     <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+      <li class=><%= message %></li>
     <% end %>
   </ul>
 <% end %>
+</div>
+
 
 <!-- form_with部分 -->
 <%= form_with model: @book do |f| %>
@@ -63,6 +65,7 @@
 
   <h4>Body</h4>
   <%= f.text_area :body %>
-
+  <h4></h4>
   <%= f.submit 'Create Book' %>
 <% end %>
+
