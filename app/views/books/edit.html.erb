@@ -1,8 +1,17 @@
-<h1>Editing Book</h1>
+
+<% if @book.errors.any? %>
+  <%= @book.errors.count %>error prohibited this book from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+
+<% end %><h1>Editing Book</h1>
 
 
-<%= form_with model: @book do |f| %>
 
+<%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
   <div class="field">
 
     <h4>Title</h4>
@@ -23,6 +32,6 @@
 
 <% end %>
 
-<a><%= link_to 'show' , book_path(@book.id) %></a>
-<a><%= link_to 'back' , '/books' %></a>
+<%= link_to 'Show' , book_path(@book.id) %>
+<%= link_to 'Back' , "/books" %>
 
